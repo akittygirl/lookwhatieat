@@ -3,9 +3,9 @@
 var express = require('express');
 var app = express();
 
-var engine = require('ejs-locals')
+//var engine = require('ejs-locals')
 
-app.engine('ejs', engine);
+//app.engine('ejs', engine);
 
 //var passport = require('passport');
 
@@ -31,7 +31,7 @@ exports.init = function() {
 
 		app.configure(function(){
 			app.set('views', __dirname + '/views');
-			app.set('view engine', 'ejs');
+			app.set('view engine', 'jade');
 
 			 // delete express.bodyParser.parse['multipart/form-data'];
 
@@ -66,33 +66,3 @@ exports.init = function() {
 
 		return app;
 }
-
-
-
-/*
-		app.configure('development', function(){
-			 
-
-			//  var db=global.settings.postgres;
-			//  global.conString="tcp://"+db.user+":"+db.password+"@"+db.host+"/"+db.database;
- 
-
-		//app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
-				 //app.use(express.logger({ format: ':method :url' }));
-		});
-
-		app.configure('staging', function(){
-			 //app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
-				// app.use(express.logger({ format: ':method :url' }));
-		});
-
-		app.configure('production', function(){
-		 //app.use(express.errorHandler()); 
-		});
-		*/
-
-		// We will use formidable instead!
-		//delete express.bodyParser.parse['multipart/form-data']
-
-		// For tracking file upload progress
-		//global.uploads=[];

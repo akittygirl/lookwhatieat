@@ -7,7 +7,7 @@
     "pg": "~0.8.7",
     "validator": "~0.4.9",
     "moment": "~1.7.2",
-    "ejs-locals": "~1.0.2"
+    "jade": "~0.30.0"
   },
   "engines": {
     "node": "0.9.x"

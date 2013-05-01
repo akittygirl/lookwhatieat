@@ -34,14 +34,13 @@ app.post('/', function(req,res,next) {
 				}
 			})
 		});
-	} else next();
+	} else next(); 
 });
 
 // Home
 /*
 app.get('/', function(req,res,next) {
 	handleTemplateRequest(req,res,next,"page/home");
-	//console.log(req.user);
 });
 
 
@@ -105,7 +104,7 @@ app.get('/logout', function(req, res) {
 */
 
 app.get('/*', function(req, res){
-    res.render('404.ejs');
+    res.render('404',{title:'Page Not Found'});
 });
 
 
@@ -115,7 +114,7 @@ app.use(function(err, req, res, next){
 
   	res.format({
   	  'appliation/json': function() {res.contentType('json');res.send(JSON.stringify({error:err.toString()}));},
-	  'text/html': function() {res.render('error.ejs', {  error: err ,status: 500});}
+	  'text/html': function() {res.render('error', {  error: err ,status: 500});}
 	});
 });
 
