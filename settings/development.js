@@ -1,11 +1,12 @@
 
 
 exports.settings={
-	domain:'127.0.0.1:3001',
-	sitelang:"en",
-	timeformat:"",
-	dateformat:"",
-	datetimeformat:"",
+	domain:'127.0.0.1',
+	domainPort:'3001',
+	siteLang:"en",
+	timeFormat:"",
+	dateFormat:"",
+	dateTimeFormat:"",
 
 	// Social Network OAuth2 Logins
 	social: {

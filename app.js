@@ -2,7 +2,7 @@
 
 var express = require('express');
 var app = express();
-var passport = require('passport');
+//var passport = require('passport');
 
 //var database_json = require('./database');
 
@@ -10,8 +10,7 @@ var passport = require('passport');
 
 //everyauth.helpExpress(app);
 
-var settings=require('./settings/'+app.settings.env).settings;
-global.settings=settings;
+
 
 //social.configAuth(settings.social);
 
@@ -20,7 +19,7 @@ global.conString="tcp://"+db.user+":"+db.password+"@"+db.host+"/"+db.database;
 
 
 
-var social = require('./logic/social');
+//var social = require('./logic/social');
 
 exports.init = function(port) {
 
@@ -36,14 +35,14 @@ exports.init = function(port) {
 			var RedisStore = require('connect-redis')(express);
 			
 			app.use(express.session({ store: new RedisStore }));
-			app.use(passport.initialize());
+			//app.use(passport.initialize());
 			
 
 			app.use(express.methodOverride());
 			app.use(express.static(__dirname + '/static'));
 			app.use(express.favicon());
 				
-			app.use(passport.session());
+			//app.use(passport.session());
 			
 
 			//app.use(everyauth.middleware());
@@ -61,32 +60,3 @@ exports.init = function(port) {
 		return app;
 }
 
-
-
-/*
-		app.configure('development', function(){
-			 
-
-			//  var db=global.settings.postgres;
-			//  global.conString="tcp://"+db.user+":"+db.password+"@"+db.host+"/"+db.database;
- 
-
-		//app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
-				 //app.use(express.logger({ format: ':method :url' }));
-		});
-
-		app.configure('staging', function(){
-			 //app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
-				// app.use(express.logger({ format: ':method :url' }));
-		});
-
-		app.configure('production', function(){
-		 //app.use(express.errorHandler()); 
-		});
-		*/
-
-		// We will use formidable instead!
-		//delete express.bodyParser.parse['multipart/form-data']
-
-		// For tracking file upload progress
-		//global.uploads=[];
