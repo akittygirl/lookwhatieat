@@ -1,0 +1,15 @@
+{
+  "name": "lookwhatieat",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "3.x",
+    "ejs": "git://github.com/wciu/ejs.git#master",
+    "underscore": "~1.4.2",
+    "pg": "~0.8.7",
+    "validator": "~0.4.9",
+    "moment": "~1.7.2"
+  },
+  "engines": {
+    "node": "0.9.x"
+  }
+}
