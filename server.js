@@ -1,6 +1,7 @@
-global.settings=require('./settings/'+app.settings.env).settings;
 
-var app 		= require('./app').init(global.settings.domainPort);
+
+
+var app 		= require('./app').init();
 var express 	= require('express');
 var content 	= require('./content/content');
 var handlers 	= require('./logic/handlers');
