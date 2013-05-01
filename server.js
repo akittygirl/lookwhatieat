@@ -38,12 +38,12 @@ app.post('/', function(req,res,next) {
 });
 
 // Home
-/*
+
 app.get('/', function(req,res,next) {
 	handleTemplateRequest(req,res,next,"page/home");
 });
 
-
+/*
 // Account
 app.get('/account', function(req,res,next) {
 	handleTemplateRequest(req,res,next,"page/account");

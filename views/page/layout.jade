@@ -1,0 +1,22 @@
+!!!5
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		title #{title} - #{global.c('site','title')}
+		meta(name="description",content="#{global.c('site','description')}")
+		meta(name="author", content="#{global.c('site','author')}")
+		link(href="/bootstrap/css/bootstrap.css", rel="stylesheet")
+		link(href="/datepicker/css/datepicker.css", rel="stylesheet")	
+		link(href="/stylesheets/common.css", rel="stylesheet")
+
+		block head
+
+	body
+		include navbar
+
+		div#mainPage
+			div.container-fluid
+				block content
+					div Nothing Here
+
+		include footer
