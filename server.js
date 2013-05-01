@@ -114,7 +114,7 @@ app.use(function(err, req, res, next){
 
   	res.format({
   	  'appliation/json': function() {res.contentType('json');res.send(JSON.stringify({error:err.toString()}));},
-	  'text/html': function() {res.render('error', {  error: err ,status: 500});}
+	  'text/html': function() {res.render('error', {  error: err ,status: 500, title: 'Unexpected Error'});}
 	});
 });
 
