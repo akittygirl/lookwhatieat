@@ -1,0 +1,70 @@
+
+<div class="container-fluid">
+
+<div class="navbar navbar-inverse">
+	<div class="navbar-inner">
+		
+			<a class="brand" href="/"><%= global.c("site","name") %></a>
+
+		      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </a>
+ 		
+			<div class="nav-collapse collapse">
+				<ul class="nav">
+
+					<li <%- (page==='home'?'class="active"':'')%>>
+						<a href="/"><%= global.c("main","topics") %></a>
+					</li>
+					
+					<li <%- (page==='topics' || page==='topic'?'class="active"':'')%>><a href="/topics"><%= global.c("main","previous-topics") %></a></li>
+
+					<li <%- (page==='about'?'class="active"':'')%>><a href="/about"><%= global.c("main","about") %></a></li>
+				</ul>
+
+				<ul class="nav pull-right">
+					
+				<li class="dropdown" id="country">
+
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+						<%= global.cn(session.country) %>
+						<b class="caret"></b>
+					</a>
+
+					<ul class="dropdown-menu">
+						<% _.each(global.settings.countries,function(c) { %> 
+							<li><a href="/country/<%=c.toLowerCase() %>"><%= global.cn(c) %></a></li>
+						<% }) %>
+					</ul>
+				</li>
+
+				<% if (req.isAuthenticated()) { %>
+					<li class="dropdown" id="account">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+								Account
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="/account"><%= global.c("account","my-account") %></a></li>
+								<li class="divider"></li>
+								<li><a href="/logout"><%= global.c("main","logout") %></a></li>
+
+								<% if (req.user && req.user.member_type_id==10) { %>
+									<li class="divider"></li>
+									<li><a href="/list-topics"><%= global.c("topic","list-topics") %></a></li>
+									<li><a href="/new-topic"><%= global.c("topic","new-topic") %></a></li>
+									<li class="divider"></li>
+									<li><a href="/view-members"><%= global.c("account","list-members") %></a></li>
+
+								<% } %>
+							</ul>
+					</li>
+				<% } %>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
