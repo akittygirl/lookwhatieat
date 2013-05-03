@@ -1,10 +1,25 @@
-var	util 		= require('util');
+//var	util 		= require('util');
 
 var persMember	= require('../persist/member');
 
 var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
+var facebook = require('passport-facebook').Strategy;
 
+var facebookStrategy = new facebook(
+{
+    passReqToCallback: true,
+    clientID: global.settings.social.facebook.id,
+    clientSecret: global.settings.social.facebook.secret,
+    callbackURL: "http://"+global.settings.domain+":"+global.settings.domainPort+"/auth/facebook/callback"
+}, function(req,accessToken, refreshToken, profile, cb) {
+  	console.log("Authenticated! "+accessToken);
+  	console.log(profile);
+  	cb(null,{id:profile.id});
+});
+
+passport.use(facebookStrategy);
+
+/*
 passport.use(new FacebookStrategy({
 	passReqToCallback: true,
     clientID: global.settings.social.facebook.id,
@@ -13,6 +28,10 @@ passport.use(new FacebookStrategy({
   },
   function(req,accessToken, refreshToken, profile, cb) {
 
+  		console.log("Authenticated!");
+  		console.log(profile);
+
+  		
   		persMember.check(profile.id,function(err,exists) {
   			if (err) return cb(err);
   			//console.log("AccessToken:"+accessToken);
@@ -56,12 +75,12 @@ passport.use(new FacebookStrategy({
 				});
 
 			}
-
+			
 			
   		});
   }
 ));
-
+*/
 
 // Should not store the whole data in the session
 // This needs to go in the database

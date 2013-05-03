@@ -23,8 +23,7 @@ var execTemplate=function(req,res,template,cb) {
 			data=_.extend(data,def);
 			if (data.template) template=data.template; // Can override the template
 			res.render(template,data,function(err,html) {
-				if (err) return cb(err);
-				return cb(null,html);
+				return cb(err,html);
 			});
 
 		});

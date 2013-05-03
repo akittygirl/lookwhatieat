@@ -5,18 +5,42 @@ html(lang="en")
 		title #{title} - #{global.c('site','title')}
 		meta(name="description",content="#{global.c('site','description')}")
 		meta(name="author", content="#{global.c('site','author')}")
-		link(href="/bootstrap/css/bootstrap.css", rel="stylesheet")
+		meta(name="viewpoint", content="width=device-width, initial-scale=1, maximum-scale=1")
+
+		//-link(href="/bootstrap/css/bootstrap.css", rel="stylesheet")
 		link(href="/datepicker/css/datepicker.css", rel="stylesheet")	
 		link(href="/stylesheets/common.css", rel="stylesheet")
+
+		//- start: Facebook Open Graph
+		meta(property="og:title", content="")
+		meta(property="og:description", content="")
+		meta(property="og:type", content="")
+		meta(property="og:url", content="")
+		meta(property="og:image", content="")
+
+		//- start: CSS
+		link(href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700", rel="stylesheet")
+		link(href="http://fonts.googleapis.com/css?family=Droid+Serif", rel="stylesheet")			
+		link(href="http://fonts.googleapis.com/css?family=Boogaloo", rel="stylesheet")			
+		link(href="http://fonts.googleapis.com/css?family=Economica:700,400italic", rel="stylesheet")			
+		link(href="/bootstrap/css/bootstrap.min.css", rel="stylesheet")			
+		link(href="/bootstrap/css/bootstrap-responsive.min.css", rel="stylesheet")	
+		link(href="/bootstrap/css/style.css", rel="stylesheet")	
+		link(href="/bootstrap/css/layerslider.css", rel="stylesheet")		
+
+		// [if lt IE 9 ]><link href="css/styleIE.css" rel="stylesheet"><![endif]
+		// [if IE 9 ]><link href="css/styleIE9.css" rel="stylesheet"><![endif]
+		// [if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]
 
 		block head
 
 	body
 		include navbar
 
-		div#mainPage
-			div.container-fluid
-				block content
-					div Nothing Here
+
+		div.container
+			block content
+				
 
 		include footer
+		include footer_js

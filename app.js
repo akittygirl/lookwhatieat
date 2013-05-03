@@ -7,7 +7,7 @@ var app = express();
 
 //app.engine('ejs', engine);
 
-//var passport = require('passport');
+var passport = require('passport');
 
 //var database_json = require('./database');
 
@@ -20,14 +20,14 @@ global.settings=require('./settings/'+app.settings.env).settings;
 
 //social.configAuth(settings.social);
 
-var db=settings.postgres;
+var db=global.settings.postgres;
 global.conString="tcp://"+db.user+":"+db.password+"@"+db.host+"/"+db.database;
 
 
 
 //var social = require('./logic/social');
 
-exports.init = function() {
+var init = function() {
 
 		app.configure(function(){
 			app.set('views', __dirname + '/views');
@@ -42,14 +42,14 @@ exports.init = function() {
 			
 			//app.use(express.session({ store: new RedisStore }));
 			app.use(express.session());
-			//app.use(passport.initialize());
+			app.use(passport.initialize());
 			
 
 			app.use(express.methodOverride());
 			app.use(express.static(__dirname + '/static'));
 			app.use(express.favicon());
 				
-			//app.use(passport.session());
+			app.use(passport.session());
 			
 
 			//app.use(everyauth.middleware());
@@ -66,3 +66,6 @@ exports.init = function() {
 
 		return app;
 }
+
+
+exports.init=init;

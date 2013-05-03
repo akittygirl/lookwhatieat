@@ -2,13 +2,15 @@
 
 
 var app 		= require('./app').init();
-var express 	= require('express');
+
 var content 	= require('./content/content');
 var handlers 	= require('./logic/handlers');
 var request		= require('./logic/request');
+var social		= require('./logic/social')
 
 var _   		= require('underscore');
-//var passport 	= require('passport');
+var passport 	= require('passport');
+
 
 // Load all the handlers 
 require("fs").readdirSync("./handlers").forEach(function(file) {require("./handlers/" + file);});
@@ -89,19 +91,19 @@ app.get('/edit-topic/:topic_id', function(req,res,next) {
 
 
 // Facebook Routes
-/*
+
 app.get('/auth/facebook', 
-	passport.authenticate('facebook',{ scope: ["email","user_location","publish_actions"]}));
+	passport.authenticate('facebook',{ scope: ["email","user_location","publish_actions","publish_stream"]}));
 
 app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/',
+  passport.authenticate('facebook', { successRedirect: '/welcome',
                                       failureRedirect: '/login' }));
 
 app.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
-*/
+
 
 app.get('/*', function(req, res){
     res.render('404',{title:'Page Not Found'});

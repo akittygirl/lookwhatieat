@@ -1,7 +1,7 @@
 
 
 exports.settings={
-	domain:'127.0.0.1',
+	domain:'dev.lookwhatieat.com',
 	domainPort:'3001',
 	siteLang:"en",
 	timeFormat:"",
@@ -11,8 +11,8 @@ exports.settings={
 	// Social Network OAuth2 Logins
 	social: {
 		facebook: {
-			id: "",
-			secret: ""
+			id: "256004617878688",
+			secret: "e4c33ca45d485aa21f778020d13f2320"
 		}
 	},
 
