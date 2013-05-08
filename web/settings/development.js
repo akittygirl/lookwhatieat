@@ -21,8 +21,8 @@ exports.settings={
 	// Postgres
 	postgres: {
 		driver: "pg",
-      	user: "postgres",
-      	password: "snoopy",
+      	user: "eat",
+      	password: "eat",
       	host: "localhost",
       	database: "eat"
 	}
