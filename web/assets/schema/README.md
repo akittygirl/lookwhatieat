@@ -1,11 +1,11 @@
 ###Backup the database schema  
 `
-"D:/Program Files/PostgreSQL/9.1/bin\pg_dump.exe" --host localhost --port 5432 --username "postgres" --no-password  --format plain --schema-only --create --verbose --file "D:\vtxcode\topicbash\assets\schema\topicbash.sql" "topicbash"
+"C:\Program Files\PostgreSQL\9.2\bin\pg_dump.exe" --host localhost --port 5432 --username "postgres"  --format plain --schema-only --create --verbose --file "C:\akittygirl\lookwhatieat\web\assets\schema\eat.sql" "eat"
 `
   
-###Backup the database base data  
+###Backup the database base data  (INCOMPLETE - NO LOOKUP TABLES TO EXPORT YET)
 `
-"D:/Program Files/PostgreSQL/9.1/bin\pg_dump.exe" --host localhost --port 5432 --username "postgres" --no-password  --format plain --data-only --verbose --file "D:\vtxcode\topicbash\assets\schema\topicbash-data.sql" --table "public.member_type" --table "public.topic_status" --table "public.topic_style" --table "public.topic_type" "topicbash"
+"C:\Program Files\PostgreSQL\9.2\bin\pg_dump.exe" --host localhost --port 5432 --username "postgres" --format plain --data-only --verbose --file "C:\akittygirl\lookwhatieat\web\assets\schema\eat-data.sql" --table "public.member_type" --table "public.topic_status" --table "public.topic_style" --table "public.topic_type" "topicbash"
 `
   
 
