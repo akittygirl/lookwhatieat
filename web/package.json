@@ -1,5 +1,5 @@
 {
-  "name": "lookwhatieat",
+  "name": "lwie-web",
   "version": "1.0.0",
   "dependencies": {
     "express": "3.x",
@@ -10,7 +10,7 @@
     "jade": "~0.30.0",
     "passport": "~0.1.16",
     "passport-facebook": "~0.1.5",
-    "vtx": "0.0.4"
+    "vtx": ""
   },
   "engines": {
     "node": "0.8.x"

@@ -1,13 +1,15 @@
+var passport 	= require('passport');
 
 /**** INITIALISE ****/
 var settings = require('./settings/development').settings;
-var vtx=require('vtx').init(settings,__dirname);
+var vtx=require('vtx').init(settings,__dirname,passport);
+//var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
 var app=vtx.getApp();
 
 var social		= require('./logic/social')
 var _   		= require('underscore');
-var passport 	= require('passport');
 var content 	= require('./content/content');
+
 // Session Preparation
 /*
 app.all('*',function(req,res,next) {
@@ -27,7 +29,7 @@ app.get('/', function(req,res,next) {
 
 // Facebook Routes
 app.get('/auth/facebook', 
-	passport.authenticate('facebook',{ scope: ["email","user_location","publish_actions","publish_stream"]}));
+	passport.authenticate('facebook',global.settings.social.facebook.scope));
 
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successRedirect: '/welcome',

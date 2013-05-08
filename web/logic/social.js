@@ -10,7 +10,7 @@ var facebookStrategy = new facebook(
     passReqToCallback: true,
     clientID: global.settings.social.facebook.id,
     clientSecret: global.settings.social.facebook.secret,
-    callbackURL: "http://"+global.settings.domain+":"+global.settings.domainPort+"/auth/facebook/callback"
+    callbackURL: "http://"+global.settings.domain+":"+global.settings.port+"/auth/facebook/callback"
 }, function(req,accessToken, refreshToken, profile, cb) {
   	console.log("Authenticated! "+accessToken);
   	console.log(profile);

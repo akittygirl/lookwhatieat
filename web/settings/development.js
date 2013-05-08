@@ -14,7 +14,8 @@ exports.settings={
 	social: {
 		facebook: {
 			id: "256004617878688",
-			secret: "e4c33ca45d485aa21f778020d13f2320"
+			secret: "e4c33ca45d485aa21f778020d13f2320",
+			scope: ["email","user_location","publish_actions","publish_stream"]
 		}
 	},
 
