@@ -7,7 +7,7 @@ var app=vtx.getApp();
 var social		= require('./logic/social')
 var _   		= require('underscore');
 var passport 	= require('passport');
-
+var content 	= require('./content/content');
 // Session Preparation
 /*
 app.all('*',function(req,res,next) {

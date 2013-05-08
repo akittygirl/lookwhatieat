@@ -4,7 +4,7 @@ exports.settings={
 	siteName:'Look What I Eat',
 	domain:'dev.lookwhatieat.com',
 	port:'3001',
-	
+
 	siteLang:"en",
 	timeFormat:"",
 	dateFormat:"",
