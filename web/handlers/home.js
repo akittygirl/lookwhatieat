@@ -20,7 +20,7 @@ item={
 var memberData 	= require('../persist/member');
 
 global.handlers.addTemplate("page/home",function(req,res,cb) {
-
+	/*
 	var photo_items=[
 		{
 			href="",
@@ -50,10 +50,11 @@ global.handlers.addTemplate("page/home",function(req,res,cb) {
 			likes=""
 		}
 	];
+	*/
 
 	memberData.get(1,function(err,data) {
 		if (err) {console.log(err);return cb(err);}
-		return cb(null,{page:'home',title:'Home',user:data.member_id,photo_items:photo_items});
+		return cb(null,{page:'home',title:'Home',user:data.member_id,photo_items:null});
 	});
  
 
