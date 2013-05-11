@@ -1,14 +1,19 @@
 
-div.span3.item
-	div.picture
-		a.image(href="#{pic.href}", title="#{pic.title}") 
-			img(src="#{pic.src}", alt="#{pic.alt}")
-		div.description
-			p #{pic.description}
-		div.meta 
-			span
-				i.fa-icon-calendar #{pic.date}
-			span
-				i.fa-icon-user	#{pic.user}
-			span
-				i.fa-icon-heart-empty #{pic.likes}
+each pic in photo_items
+
+	div.span3.item
+		div.picture
+			a.image(href="#{pic.href}", title="#{pic.title}") 
+				img(src="#{pic.src}", alt="#{pic.alt}")
+			div.description
+				p #{pic.description}
+			div.meta 
+				span
+					i.fa-icon-calendar 
+					|	#{pic.date}
+				span
+					i.fa-icon-user	
+					|	#{pic.user}
+				span
+					i.fa-icon-heart-empty 
+					|	#{pic.likes}
