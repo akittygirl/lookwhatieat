@@ -15,22 +15,22 @@ item={
 	likes=""
 }
 
-*/
+*/ 
 
 var memberData 	= require('../persist/member');
 
-global.handlers.addTemplate("page/home",function(req,res,cb) {
+global.handlers.addPage("page/home",function(req,res,cb) {
 	/*
 	var photo_items=[
-		{
-			href="",
+		{ 
+			href="", 
 			title="",
 			src="",
 			description="",
 			date="",
 			user="",
 			likes=""
-		},
+		}, 
 		{
 			href="",
 			title="",
