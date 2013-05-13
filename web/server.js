@@ -5,7 +5,7 @@ var settings = require('./settings/development').settings;
 var vtx=require('vtx').init(settings,__dirname,passport);
 //var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
 var app=vtx.getApp();
-
+ 
 var social		= require('./logic/social')
 var _   		= require('underscore');
 var content 	= require('./content/content');
@@ -21,12 +21,13 @@ app.all('*',function(req,res,next) {
 */
  
 // Home
-
+ 
 app.get('/', function(req,res,next) {
 	global.handlers.tmp(req,res,next,"page/home");
-});
+}); 
 
-
+   
+ 
 // Facebook Routes
 app.get('/auth/facebook', 
 	passport.authenticate('facebook',global.settings.social.facebook.scope));
@@ -34,8 +35,8 @@ app.get('/auth/facebook',
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successRedirect: '/welcome',
                                       failureRedirect: '/login' }));
-
-
+ 
+ 
 /**** VTX Handlers ****/
 vtx.ajaxHandling();
 vtx.errorHandling();
