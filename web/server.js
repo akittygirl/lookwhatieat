@@ -2,8 +2,8 @@ var passport 	= require('passport');
 
 /**** INITIALISE ****/
 var settings = require('./settings/development').settings;
-//var vtx=require('vtx').init(settings,__dirname,passport);
-var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
+var vtx=require('vtx').init(settings,__dirname,passport);
+//var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
 var app=vtx.getApp();
  
 var social		= require('./logic/social')
