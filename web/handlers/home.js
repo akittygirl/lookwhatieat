@@ -15,7 +15,7 @@ item={
 	likes=""
 }
 
-*/
+*/ 
 
 var memberData 	= require('../persist/member');
 
@@ -79,3 +79,8 @@ global.handlers.addTemplate("page/home",function(req,res,cb) {
 	
 });
 
+
+
+global.handlers.addReadCall("home-html",function(req,id,cb) {
+	return cb(null,{"guess":parseInt(id)+1});
+});
