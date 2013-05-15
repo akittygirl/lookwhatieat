@@ -17,7 +17,7 @@ item={
 
 */ 
 
-var memberData 	= require('../persist/member');
+//var memberData 	= require('../persist/member');
 
 global.handlers.addPage("page/home",function(req,res,cb) {
 	
@@ -70,10 +70,10 @@ global.handlers.addPage("page/home",function(req,res,cb) {
 	];
 	
 
-	memberData.get(1,function(err,data) {
-		if (err) {console.log(err);return cb(err);}
-		return cb(null,{page:'home',title:'Home',user:data.member_id,photo_items:photo_items});
-	});
+	//memberData.get(1,function(err,data) {
+	//	if (err) {console.log(err);return cb(err);}
+		return cb(null,{page:'home',title:'Home',photo_items:photo_items});
+	//});
  
 
 	
