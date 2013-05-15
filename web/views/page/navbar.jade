@@ -10,8 +10,12 @@ header
 
 				div.nav-collapse.collapse
 					ul.nav
-						li.active
+						li(data-navpage="home")
 							a(href="/") home
-						li
-							a(href="/auth/facebook") Login with Facebook 
+						li(data-navpage="register")
+							a(href="/register") register 
+						li(data-navpage="login")
+							a(href="/login") login 
+
+
 

@@ -2,8 +2,8 @@ var passport 	= require('passport');
 
 /**** INITIALISE ****/
 var settings = require('./settings/development').settings;
-var vtx=require('vtx').init(settings,__dirname,passport);
-//var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
+//var vtx=require('vtx').init(settings,__dirname,passport);
+var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
 var app=vtx.getApp();
  
 var social		= require('./logic/social')
@@ -28,6 +28,16 @@ app.get('/', function(req,res,next) {
 // Account
 app.get('/account', function(req,res,next) {
 	global.handlers.page(req,res,next,"page/account");
+}); 
+
+// Login
+app.get('/login', function(req,res,next) {
+	global.handlers.page(req,res,next,"page/login");
+}); 
+
+// Register
+app.get('/register', function(req,res,next) {
+	global.handlers.page(req,res,next,"page/register");
 }); 
 
 // Profile with photo feed

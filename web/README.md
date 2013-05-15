@@ -8,6 +8,8 @@ https://github.com/visionmedia/jade#readme
 
 
 
+How do postgres schema's work?
+
 
 
 account
