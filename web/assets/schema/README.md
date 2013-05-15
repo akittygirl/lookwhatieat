@@ -10,3 +10,9 @@
   
 
 ###ALTER DATABASE eat SET TIMEZONE TO GMT
+
+
+
+Import backup from Daniel's computer
+
+D:\Program Files\PostgreSQL\9.2\bin>psql --dbname eat --file "D:\akittygirl\lookwhatieat\web\assets\schema\backup1.sql" --username eat
