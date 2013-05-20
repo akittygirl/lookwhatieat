@@ -2,8 +2,24 @@ var passport 	= require('passport');
 
 /**** INITIALISE ****/
 var settings = require('./settings/development').settings;
-var vtx=require('vtx').init(settings,__dirname,passport);
-//var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
+
+// Mongoose
+var mongoose = require('mongoose')
+mongoose.connect(settings.mongodb)
+
+// Models
+var fs = require('fs');
+var models_path = __dirname + '/models'
+fs.readdirSync(models_path).forEach(function (file) {
+	console.log("Loading Model: "+file);
+  	require(models_path+'/'+file)
+})
+
+
+
+
+//var vtx=require('vtx').init(settings,__dirname,passport);
+var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
 var app=vtx.getApp();
  
 var social		= require('./logic/social')
@@ -19,6 +35,8 @@ app.all('*',function(req,res,next) {
 	});
 });
 */
+
+
  
 // Home
 app.get('/', function(req,res,next) {

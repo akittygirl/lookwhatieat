@@ -10,7 +10,8 @@
     "jade": "~0.30.0",
     "passport": "~0.1.16",
     "passport-facebook": "~0.1.5",
-    "vtx": "*"
+    "vtx": "*",
+    "mongoose": "~3.6.11"
   },
   "engines": {
     "node": "0.8.x"

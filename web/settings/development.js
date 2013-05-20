@@ -20,6 +20,7 @@ exports.settings={
 	},
 
 	// Postgres
+	/*
 	postgres: {
 		driver: "pg",
       	user: "eat",
@@ -27,6 +28,10 @@ exports.settings={
       	host: "localhost",
       	database: "eat"
 	}
+	*/
+
+	mongodb: 'mongodb://localhost/lookwhatieat'
+
 
 }
   
