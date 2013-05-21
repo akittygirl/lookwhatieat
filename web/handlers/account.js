@@ -1,6 +1,6 @@
 
 var Account = require('mongoose').model('Account');
-
+var formLogic=require("../logic/form");
 
 
 global.handlers.addPage("page/account",function(req,res,cb) {
@@ -14,8 +14,12 @@ global.handlers.addPage("page/register",function(req,res,cb) {
 
 global.handlers.addCreateCall("account",function(req,res,formData,cb) {
 
+	var vErrors=[];
+
+
 	if (formData.password!=formData.confirm_password) {
-		return cb(null,{ok:false,message:"The passwords don't match."});
+		formLogic.addError(vErrors,"confirm_password","Passwords do not match.");
+		return cb(null,{ok:false,errors:vErrors});
 	}
 
 	delete formData.confirm_password
@@ -27,8 +31,10 @@ global.handlers.addCreateCall("account",function(req,res,formData,cb) {
 	});
 
 	account.save(function(err,_account) {
-		if (err) return cb(null,{ok:false,saveError:err});
-
+		if (err) {
+			formLogic.passMongooseErrors(vErrors,err);
+			return cb(null,{ok:false,errors:vErrors});
+		}
 		// Need to create a session and log them in! (INCOMPLETE)
 
 

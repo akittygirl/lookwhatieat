@@ -4,7 +4,7 @@ block content
 
 	div.row-fluid
 		div#page-title.span4.offset4
-				h2 #{global.c("account","register")}
+				h2 #{global.c("account","register_title")}
 	div.row-fluid
 		div#wrapper.lr-page.full.span4.offset4
 			div.row-fluid
@@ -15,7 +15,7 @@ block content
 						div.img 
 							i.fa-icon-facebook
 						div.text
-							| Register with Facebook
+							| #{global.c("account","register_with_facebook")}
 					//a(href="").twitter_connect
 						div.img 
 							i.fa-icon-twitter
@@ -25,9 +25,9 @@ block content
 						h3(style="background:#f0f0f0") or
 					form
 						div.row-fluid
-							input#user(name="email",type="text",placeholder="email").span12
-							input#pass(name="password",type="text",placeholder="password").span12
-							input#cpass(name="confirm_password",type="text",placeholder="confirm password").span12
+							input#email(name="email",type="text",placeholder=global.c("account","email_placeholder")).span12
+							input#pass(name="password",type="text",placeholder=global.c("account","password_placeholder")).span12
+							input#cpass(name="confirm_password",type="text",placeholder=global.c("account","confirm_password_placeholder")).span12
 						div.actions
-							button(type="call-create",data-call="account").btn.btn-success.span12 Create Account
+							button(type="call-create",data-call="account").btn.btn-success.span12 #{global.c("account","create_account")}
 

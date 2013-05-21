@@ -47,7 +47,7 @@ AccountSchema.path('email').validate(function (email) {
   } catch(e) {
     ok=false;
   }
-  console.log(ok);
+
   return ok;
 }, 'Email is invalid')
 

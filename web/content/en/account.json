@@ -1,5 +1,15 @@
 {
 	"account":"account",
-	"login":"Login to your account",
-	"register":"Create your account"
+	"login_title":"Login to your account",
+
+	"register_title":"Create your account",
+	"register_with_facebook":"Register with Facebook",
+	"or":"or",
+	"create_account":"Create Account",
+
+	"email_placeholder":"email address",
+	"password_placeholder":"password",
+	"confirm_password_placeholder":"confirm password"
+
+
 }

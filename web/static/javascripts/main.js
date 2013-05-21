@@ -4,75 +4,46 @@ $(function() {
 	// Highlight the correct menu item
 	$("ul.nav li[data-navpage="+serverData.page+"]").addClass("active");
 
-	$("form").on("submit",function(e) {
-		e.preventDefault();
-	});
+	// Stop all forms from being submitted
+	$("form").on("submit",function(e) {e.preventDefault();});
 
 	$("button[type='call-update']").on("click",function(){
-		vtx.update($(this).data("call"),$(this).data("id"),$('form'),function(data) {
+		var $form=$("form"); // Needs correcting
+		vtx.update($(this).data("call"),$(this).data("id"),$form,function(data) {
 			if (data.ok) {
-				if (data.redirect) {
-					window.location=data.redirect;
-				} else {
-					if (data.message) Notifier.success(data.message);
-						else Notifier.success("Update successful.");
-				}
+				if (data.message) Notifier.success(data.message);
+				if (data.redirect) window.location=data.redirect;
 			} else {
-				if (data.validationError) {
-					console.log(data.validationError);
-					if (data.validationError && data.validationError.errors) {
-						_.each(data.validationError.errors,function(err) {
-							Notifier.error(err.message,data.validationError.message);
-						});
-					} else {
-						Notifier.error(data.validationError.message);
-					}
-
-				}
+				if (data.message) Notifier.error(data.message);
+				if (data.errors) FormValidationErrors(data.errors,$form);
 			}
 		});
 	});
 
 	$("button[type='call-create']").on("click",function() {
-		
-		vtx.create($(this).data("call"),$("form"),function(data) {
-			console.log(data);
-
+		var $form=$("form"); // Needs correcting
+		vtx.create($(this).data("call"),$form,function(data) {
 			if (data.ok) {
+				if (data.message) Notifier.success(data.message);
 				if (data.redirect) window.location=data.redirect;
 			} else {
 				if (data.message) Notifier.error(data.message);
-
-			}
-
-
-		});
-
-		/*
-		vtx.update($(this).data("call"),$(this).data("id"),$('form'),function(data) {
-			if (data.ok) {
-				if (data.redirect) {
-					window.location=data.redirect;
-				} else {
-					if (data.message) Notifier.success(data.message);
-						else Notifier.success("Update successful.");
-				}
-			} else {
-				if (data.validationError) {
-					console.log(data.validationError);
-					if (data.validationError && data.validationError.errors) {
-						_.each(data.validationError.errors,function(err) {
-							Notifier.error(err.message,data.validationError.message);
-						});
-					} else {
-						Notifier.error(data.validationError.message);
-					}
-
-				}
+				if (data.errors) FormValidationErrors(data.errors,$form);
 			}
 		});
-		*/
 	});
-
-
 });
+
+
+var FormValidationErrors=function(errors,$form) {
+	_.each(errors,function(err) {
+		var $f=$form.find("[name='"+err.field+"']");
+		if ($f.length) {
+			$f.attr("title",err.message);
+			$f.tipsy({gravity:'w',trigger: 'manual', fade: true}).tipsy("show");
+			$f.on("change",function() {
+				$f.tipsy("hide");
+			});
+		}
+	});
+};
