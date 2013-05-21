@@ -6,3 +6,27 @@ block content
 		div#page-title.span4.offset4
 				h2 #{global.c("account","login")}
 
+	div.row-fluid
+		div#wrapper.lr-page.full.span4.offset4
+			div.row-fluid
+				div#login-form.span12
+					div.page-title-small
+						h3 use your account
+					a(href="").facebook_connect
+						div.img 
+							i.fa-icon-facebook
+						div.text
+							| Login with Facebook
+					//--a(href="").twitter_connect
+						div.img 
+							i.fa-icon-twitter
+						div.text
+							| Login with Twitter
+					div.page-title-small
+						h3(style="background:#f0f0f0") or
+					form
+						div.row-fluid
+							input#user(name="email",type="text",placeholder="email").span12
+							input#pass(name="password",type="text",placeholder="password").span12							
+						div.actions
+							button(type="call-login",data-call="account").btn.btn-success.span12 Login

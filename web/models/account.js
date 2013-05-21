@@ -10,7 +10,10 @@ var mongoose = require('mongoose')
   , _ = require('underscore')
   , crypto = require('crypto')
   , authTypes = ['facebook']
-  , accountTypes= ['gamer','controller','maker','god'];
+  , check = require('validator').check
+
+
+var accountTypes= ['gamer','controller','maker','god'];
 
 var AccountSchema=new Schema({
 	email:String,
@@ -37,9 +40,16 @@ var validatePresenceOf = function (value) {
 
 AccountSchema.path('email').validate(function (email) {
   // if you are authenticating by any of the oauth strategies, don't validate
-  if (authTypes.indexOf(this.provider) !== -1) return true
-  return email.length
-}, 'Email cannot be blank')
+  //if (authTypes.indexOf(this.provider) !== -1) return true
+  var ok=true;
+  try{
+    check(email).isEmail(); 
+  } catch(e) {
+    ok=false;
+  }
+  console.log(ok);
+  return ok;
+}, 'Email is invalid')
 
 AccountSchema.path('username').validate(function (username) {
   // if you are authenticating by any of the oauth strategies, don't validate
