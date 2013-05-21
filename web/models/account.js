@@ -1,3 +1,10 @@
+/*
+	Need to check the username is unique if they have one
+	Need to validate the email address
+	Need to put restrictions in for the username and password
+
+*/
+
 var mongoose = require('mongoose')
   , Schema = mongoose.Schema
   , _ = require('underscore')
@@ -57,7 +64,7 @@ AccountSchema.pre('save', function(next) {
 })
 
 AccountSchema.methods = {
-	
+
   authenticate: function(plainText) {
     return this.encryptPassword(plainText) === this.hashed_password
   },

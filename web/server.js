@@ -58,12 +58,7 @@ app.get('/register', function(req,res,next) {
 	global.handlers.page(req,res,next,"page/register");
 }); 
 
-// Profile with photo feed
-app.get('/[id]', function(req,res,next) {
-	global.handlers.page(req,res,next,"page/profile");
-}); 
 
- 
 // Facebook Routes
 app.get('/auth/facebook', 
 	passport.authenticate('facebook',global.settings.social.facebook.scope));
@@ -71,7 +66,15 @@ app.get('/auth/facebook',
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successRedirect: '/welcome',
                                       failureRedirect: '/login' }));
- 
+
+// Profile with photo feed
+app.get('/:id', function(req,res,next) {
+	global.handlers.page(req,res,next,"page/person");
+}); 
+
+
+
+
   
 /**** VTX Handlers ****/
 vtx.ajaxHandling();

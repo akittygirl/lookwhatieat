@@ -39,7 +39,7 @@ $(function() {
 			console.log(data);
 
 			if (data.ok) {
-
+				if (data.redirect) window.location=data.redirect;
 			} else {
 				if (data.message) Notifier.error(data.message);
 
