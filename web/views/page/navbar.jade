@@ -8,14 +8,25 @@ header
 					span.icon-bar
 				a.brand(href="/") #{global.c("site", "name")}
 
-				div.nav-collapse.collapse
-					ul.nav
-						li(data-navpage="home")
-							a(href="/") home
-						li(data-navpage="register")
-							a(href="/register") register 
-						li(data-navpage="login")
-							a(href="/login") login 
+				if !req.isAuthenticated()
+					div.nav-collapse.collapse
+						ul.nav
+							li(data-navpage="home")
+								a(href="/") home
+							li(data-navpage="register")
+								a(href="/register") register 
+							li(data-navpage="login")
+								a(href="/login") login 
+
+				if req.isAuthenticated()
+					div.nav-collapse.collapse
+						ul.nav
+							li(data-navpage="home")
+								a(href="/") home
+							li(data-navpage="account")
+								a(href="/account") account 
+							li(data-navpage="logout")
+								a(href="/logout") logout 
 
 
 
