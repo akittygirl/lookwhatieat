@@ -4,29 +4,29 @@ block content
 
 	div.row-fluid
 		div#page-title.span4.offset4
-				h2 #{global.c("account","login")}
+				h2 #{global.c("account","login_title")}
 
 	div.row-fluid
 		div#wrapper.lr-page.full.span4.offset4
 			div.row-fluid
 				div#login-form.span12
-					div.page-title-small
+					//div.page-title-small
 						h3 use your account
 					a(href="/auth/facebook").facebook_connect
 						div.img 
 							i.fa-icon-facebook
 						div.text
-							| Login with Facebook
+							| #{global.c("account","login_with_facebook")}
 					//--a(href="").twitter_connect
 						div.img 
 							i.fa-icon-twitter
 						div.text
 							| Login with Twitter
 					div.page-title-small
-						h3(style="background:#f0f0f0") or
+						h3(style="background:#f0f0f0") #{global.c("account","or")}
 					form
-						div.row-fluid
-							input#user(name="email",type="text",placeholder="email").span12
-							input#pass(name="password",type="text",placeholder="password").span12							
+						div.row-fluid 
+							input#user(name="email",type="text",placeholder=global.c("account","email_placeholder")).span12
+							input#pass(name="password",type="text",placeholder=global.c("account","password_placeholder")).span12							
 						div.actions
-							button(type="call-login",data-call="account").btn.btn-success.span12 Login
+							button(type="call-create",data-call="login").btn.btn-success.span12 #{global.c("account","login")}

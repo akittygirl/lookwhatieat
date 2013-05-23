@@ -9,6 +9,7 @@ $(function() {
 
 	$("button[type='call-update']").on("click",function(){
 		var $form=$("form"); // Needs correcting
+		var $button=$(this);
 		vtx.update($(this).data("call"),$(this).data("id"),$form,function(data) {
 			if (data.ok) {
 				if (data.message) Notifier.success(data.message);
@@ -16,12 +17,20 @@ $(function() {
 			} else {
 				if (data.message) Notifier.error(data.message);
 				if (data.errors) FormValidationErrors(data.errors,$form);
+				if (data.below_button_message) {
+					$button.attr("title",data.below_button_message);
+					$button.tipsy({gravity:'n',trigger: 'manual', fade: true}).tipsy("show");
+					$button.on("click",function() {
+						$button.tipsy("hide");
+					});
+				}
 			}
 		});
 	});
 
 	$("button[type='call-create']").on("click",function() {
 		var $form=$("form"); // Needs correcting
+		var $button=$(this);
 		vtx.create($(this).data("call"),$form,function(data) {
 			if (data.ok) {
 				if (data.message) Notifier.success(data.message);
@@ -29,6 +38,13 @@ $(function() {
 			} else {
 				if (data.message) Notifier.error(data.message);
 				if (data.errors) FormValidationErrors(data.errors,$form);
+				if (data.below_button_message) {
+					$button.attr("title",data.below_button_message);
+					$button.tipsy({gravity:'n',trigger: 'manual', fade: true}).tipsy("show");
+					$button.on("click",function() {
+						$button.tipsy("hide");
+					});
+				}
 			}
 		});
 	});

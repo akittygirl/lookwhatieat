@@ -1,6 +1,9 @@
 {
 	"account":"account",
+
 	"login_title":"Login to your account",
+	"login_with_facebook":"Login with Facebook",
+	"login":"Login",
 
 	"register_title":"Create your account",
 	"register_with_facebook":"Register with Facebook",
@@ -9,7 +12,12 @@
 
 	"email_placeholder":"email address",
 	"password_placeholder":"password",
-	"confirm_password_placeholder":"confirm password"
+	"confirm_password_placeholder":"confirm password",
 
+	"login_failed":"Your login is incorrect.",
+
+	"auth_email_blank":"Your login is incorrect.",
+	"auth_password_blank":"Your login is incorrect.",
+	"auth_confirm_password":"Your login is incorrect."
 
 }
