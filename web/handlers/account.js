@@ -16,7 +16,6 @@ global.handlers.addCreateCall("account",function(req,res,formData,cb) {
 
 	var vErrors=[];
 
-
 	if (formData.password!=formData.confirm_password) {
 		formLogic.addError(vErrors,"confirm_password","Passwords do not match.");
 		return cb(null,{ok:false,errors:vErrors});
@@ -37,6 +36,9 @@ global.handlers.addCreateCall("account",function(req,res,formData,cb) {
 		}
 		// Need to create a session and log them in! (INCOMPLETE)
 
+		req.login(_account,function(err) {
+			if (err) return cb(err);
+		});
 
 		return cb(null,{ok:true,redirect:"/"+_account.id});
 	});
