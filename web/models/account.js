@@ -2,6 +2,14 @@
 	Need to check the username is unique if they have one
 	Need to validate the email address
 	Need to put restrictions in for the username and password
+  
+
+  Don't allow multiple accounts with the same email
+  Don't allow multiple accounts with the same username
+
+  What if someone joins with Facebook and it matches an existing account email?
+
+  Don't allow username's to match any of the internal page names or maybe any dictionary words
 
 */
 
@@ -21,7 +29,21 @@ var AccountSchema=new Schema({
 	provider:String,
 	hashed_password:String,
 	salt:String,
-	facebook: {},
+	facebook: {
+    id: Number,
+    link: String,
+    username: String,
+    location: {
+      id: String,
+      name: String  
+    },
+    locale: String,
+    verified: String,
+    accessToken: String
+  },
+  name:String,
+  gender:String,
+  timezone: Number,
 	active:Boolean
 });
 

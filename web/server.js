@@ -40,6 +40,8 @@ app.all('*',function(req,res,next) {
  
 // Home
 app.get('/', function(req,res,next) {
+	//console.log(req.session);
+	console.log(req.user);
 	global.handlers.page(req,res,next,"page/home");
 }); 
 
@@ -64,8 +66,13 @@ app.get('/auth/facebook',
 	passport.authenticate('facebook',global.settings.social.facebook.scope));
 
 app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/welcome',
+  passport.authenticate('facebook', { successRedirect: '/',
                                       failureRedirect: '/login' }));
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 // Profile with photo feed
 app.get('/:id', function(req,res,next) {
