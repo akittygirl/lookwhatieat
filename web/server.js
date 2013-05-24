@@ -5,7 +5,13 @@ var settings = require('./settings/development').settings;
 
 // Mongoose
 var mongoose = require('mongoose')
-mongoose.connect(settings.mongodb)
+var dbUrl = 'mongodb://';
+if (settings.mongodb.username) dbUrl += settings.mongodb.username;
+if (settings.mongodb.password) dbUrl += ':'+settings.mongodb.password;
+if (settings.mongodb.username || settings.mongodb.password) +'@';
+dbUrl += settings.mongodb.host+':'+settings.mongodb.port;
+dbUrl += '/' + settings.mongodb.db;
+mongoose.connect(dbUrl)
 
 // Models
 var fs = require('fs');
@@ -16,16 +22,16 @@ fs.readdirSync(models_path).forEach(function (file) {
 })
 
 
+  
 
-
-var vtx=require('vtx').init(settings,__dirname,passport);
-//var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
+//var vtx=require('vtx').init(settings,__dirname,passport);
+var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
 var app=vtx.getApp();
  
 var social		= require('./logic/social')
 var _   		= require('underscore');
 var content 	= require('./content/content');
-
+  
 // Session Preparation
 /*
 app.all('*',function(req,res,next) {

@@ -24,13 +24,13 @@ var mongoose = require('mongoose')
 var accountTypes= ['gamer','controller','maker','god'];
 
 var AccountSchema=new Schema({
-	email:String,
-	username:String,
+	email:{type:String,unique:true,required:true},
+	username:{type:String,unique:true,required:false},
 	provider:String,
 	hashed_password:String,
 	salt:String,
 	facebook: {
-    id: Number,
+    id: {type:Number,unique:true,required:true},
     link: String,
     username: String,
     location: {

@@ -19,6 +19,8 @@ exports.settings={
 		}
 	},
 
+	sessionManagement: 'mongo',
+
 	// Postgres
 	/*
 	postgres: {
@@ -28,10 +30,15 @@ exports.settings={
       	host: "localhost",
       	database: "eat"
 	}
-	*/
-
-	mongodb: 'mongodb://localhost/lookwhatieat'
-
+	*/   
+   
+	mongodb: { 
+		db: 'lookwhatieat',
+	    host: 'localhost',
+	    port: 27017,
+	    username: null,
+	    password: null,
+	}
 
 }
   
