@@ -3,11 +3,13 @@ var Account = require('mongoose').model('Account');
 var formLogic=require("../logic/form");
 
 
-global.handlers.addPage("page/account",function(req,res,cb) {
+global.handlers.addPage("public/account",function(req,res,cb) {
+	if (!req.isAuthenticated()) return cb(null,{redirect:"/login"});
 	return cb(null,{page:'account',title:'Account'});
 }); 
 
-global.handlers.addPage("page/register",function(req,res,cb) {
+global.handlers.addPage("public/register",function(req,res,cb) {
+	if (req.isAuthenticated()) return cb(null,{redirect:"/"});
 	return cb(null,{page:'register',title:'Register'});
 }); 
 

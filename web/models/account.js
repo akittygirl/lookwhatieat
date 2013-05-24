@@ -44,7 +44,8 @@ var AccountSchema=new Schema({
   name:String,
   gender:String,
   timezone: Number,
-	active:Boolean
+	active:Boolean,
+  admin:Boolean
 });
 
 AccountSchema
@@ -54,10 +55,17 @@ AccountSchema
     this.salt = this.makeSalt()
     this.hashed_password = this.encryptPassword(password)
   })
-  .get(function() { return this._password })
+  .get(function() { return this._password });
+
+
+AccountSchema
+  .virtual('nick')
+  .get(function() { 
+    return this.username || this.email;
+  });
 
 var validatePresenceOf = function (value) {
-  return value && value.length
+  return value && value.length;
 }
 
 AccountSchema.path('email').validate(function (email) {
@@ -88,11 +96,10 @@ AccountSchema.path('hashed_password').validate(function (hashed_password) {
 AccountSchema.pre('save', function(next) {
   if (!this.isNew) return next()
 
-  if (!validatePresenceOf(this.password)
-    && authTypes.indexOf(this.provider) === -1)
-    next(new Error('Invalid password'))
+  if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1)
+    next(new Error('Invalid password'));
   else
-    next()
+    next();
 })
 
 AccountSchema.methods = {

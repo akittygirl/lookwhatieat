@@ -1,0 +1,46 @@
+header
+	div.container
+		div.navbar.navbar-inverse
+			div.navbar-inner
+				a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.brand(href="/") #{global.c("site", "name")}
+
+				if !req.isAuthenticated()
+					div.nav-collapse.collapse
+						ul.nav
+							li(data-navpage="home")
+								a(href="/") home
+							li(data-navpage="register")
+								a(href="/register") register 
+							li(data-navpage="login")
+								a(href="/login") login 
+ 
+				if req.isAuthenticated()
+					div.nav-collapse.collapse
+						ul.nav
+							li(data-navpage="following")
+								a(href="/") my feed
+							li(data-navpage="following")
+								a(href="/") following
+							li(data-navpage="followers")
+								a(href="/") followers
+							
+						ul.nav.pull-right
+							li.dropdown
+								a(href="#",data-toggle="dropdown").dropdown-toggle
+									| #{req.user.nick}
+									b.caret
+								ul.dropdown-menu
+									li(data-navpage="account")
+										a(href="/account") Account Settings
+									li(data-navpage="logout")
+										a(href="/logout") Logout 
+									li(data-navpage="admin")
+										a(href="/admin") Administration 
+
+
+
+

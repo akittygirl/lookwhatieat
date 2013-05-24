@@ -41,29 +41,29 @@ app.all('*',function(req,res,next) {
 	});
 });
 */
-
+ 
 
  
 // Home
 app.get('/', function(req,res,next) {
 	//console.log(req.session);
-	console.log(req.user);
-	global.handlers.page(req,res,next,"page/home");
+	//console.log(req.user);
+	global.handlers.page(req,res,next,"public/home");
 }); 
 
 // Account
 app.get('/account', function(req,res,next) {
-	global.handlers.page(req,res,next,"page/account");
+	global.handlers.page(req,res,next,"public/account");
 }); 
 
 // Login
 app.get('/login', function(req,res,next) {
-	global.handlers.page(req,res,next,"page/login");
+	global.handlers.page(req,res,next,"public/login");
 }); 
 
 // Register
 app.get('/register', function(req,res,next) {
-	global.handlers.page(req,res,next,"page/register");
+	global.handlers.page(req,res,next,"public/register");
 }); 
 
 
@@ -82,7 +82,7 @@ app.get('/logout', function(req, res){
 
 // Profile with photo feed
 app.get('/:id', function(req,res,next) {
-	global.handlers.page(req,res,next,"page/person");
+	global.handlers.page(req,res,next,"public/person");
 }); 
 
 

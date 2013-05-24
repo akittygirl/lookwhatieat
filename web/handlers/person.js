@@ -1,7 +1,7 @@
 var Account = require('mongoose').model('Account');
 
 
-global.handlers.addPage("page/person",function(req,res,cb) {
+global.handlers.addPage("public/person",function(req,res,cb) {
 
 	Account.findById(req.params.id,function(err,acc) {
 		// If can't find then need to search by username

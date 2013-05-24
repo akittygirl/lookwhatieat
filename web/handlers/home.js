@@ -1,25 +1,5 @@
 
-/*
-
-[{},{},{}]
-
-photoitem
-
-item={
-	href="",
-	title="",
-	src="",
-	description="",
-	date="",
-	user="",
-	likes=""
-}
-
-*/ 
-
-//var memberData 	= require('../persist/member');
-
-global.handlers.addPage("page/home",function(req,res,cb) {
+global.handlers.addPage("public/home",function(req,res,cb) {
 	
 	var photo_items=[
 		{
@@ -68,17 +48,10 @@ global.handlers.addPage("page/home",function(req,res,cb) {
 			likes:"1234"
 		}				
 	];
-	
 
-	//memberData.get(1,function(err,data) {
-	//	if (err) {console.log(err);return cb(err);}
-		return cb(null,{page:'home',title:'Home',photo_items:photo_items});
-	//});
- 
+	return cb(null,{page:'home',title:'Home',photo_items:photo_items});
 
-	
 });
-
 
 
 global.handlers.addReadCall("home-html",function(req,id,cb) {
