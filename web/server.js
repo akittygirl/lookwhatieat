@@ -24,8 +24,8 @@ fs.readdirSync(models_path).forEach(function (file) {
 
   
 
-//var vtx=require('vtx').init(settings,__dirname,passport);
-var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
+var vtx=require('vtx').init(settings,__dirname,passport);
+//var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
 var app=vtx.getApp();
  
 var social		= require('./logic/social')
