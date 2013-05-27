@@ -5,6 +5,9 @@
 	"login_with_facebook":"Login with Facebook",
 	"login":"Login",
 
+	"forgot_title":"Forgot your password?",
+	"reset_password":"Reset my Password",
+
 	"register_title":"Create your account",
 	"register_with_facebook":"Register with Facebook",
 	"or":"or",
@@ -18,6 +21,7 @@
 
 	"auth_email_blank":"Your login is incorrect.",
 	"auth_password_blank":"Your login is incorrect.",
-	"auth_confirm_password":"Your login is incorrect."
+	"auth_confirm_password":"Your login is incorrect.",
 
+	"facebook_email_used":"You already have an account. Login directly and then link your account to Facebook in Account Settings."
 }

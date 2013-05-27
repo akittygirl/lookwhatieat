@@ -1,6 +1,7 @@
 
 $(function() {
-	
+
+
 	// Highlight the correct menu item
 	$("ul.nav li[data-navpage="+serverData.page+"]").addClass("active");
 
@@ -48,7 +49,37 @@ $(function() {
 			}
 		});
 	});
+
+
+	if (serverFlash) showFlashMessages(serverFlash);
+
 });
+
+var showFlashMessages=function(flash) {
+	_.each(flash,function(i,type) {
+		if (type=="error") {
+			_.each(i,function(m) {
+				 Notifier.error(m);
+			});
+		}
+		if (type=="warning") {
+			_.each(i,function(m) {
+				 Notifier.warning(m);
+			});
+		}
+		if (type=="info") {
+			_.each(i,function(m) {
+				 Notifier.info(m);
+			});
+		}
+		if (type=="success") {
+			_.each(i,function(m) {
+				 Notifier.success(m);
+			});
+		}
+	});
+	
+}
 
 
 var FormValidationErrors=function(errors,$form) {

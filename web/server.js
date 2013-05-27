@@ -24,8 +24,8 @@ fs.readdirSync(models_path).forEach(function (file) {
 
   
 
-var vtx=require('vtx').init(settings,__dirname,passport);
-//var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
+//var vtx=require('vtx').init(settings,__dirname,passport);
+var vtx=require('./../../../vtxcode/vtx').init(settings,__dirname,passport);
 var app=vtx.getApp();
  
 var social		= require('./logic/social')
@@ -42,12 +42,12 @@ app.all('*',function(req,res,next) {
 });
 */
  
-
+ 
  
 // Home
 app.get('/', function(req,res,next) {
 	//console.log(req.session);
-	//console.log(req.user);
+	
 	global.handlers.page(req,res,next,"public/home");
 }); 
 
@@ -59,6 +59,11 @@ app.get('/account', function(req,res,next) {
 // Login
 app.get('/login', function(req,res,next) {
 	global.handlers.page(req,res,next,"public/login");
+}); 
+
+// Forgot
+app.get('/forgot', function(req,res,next) {
+	global.handlers.page(req,res,next,"public/forgot");
 }); 
 
 // Register
@@ -77,11 +82,8 @@ app.get('/auth/facebook',
 
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '/login' }));
-
-
-
-
+                                      failureRedirect: '/login',
+                                      failureFlash: true  }));
 
 app.get('/logout', function(req, res){
   req.logout();

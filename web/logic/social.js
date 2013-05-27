@@ -4,14 +4,14 @@ var passport = require('passport');
 var facebook = require('passport-facebook').Strategy;
 var Account = require('mongoose').model('Account');
 
-
+ 
 var facebookStrategy = new facebook(
 {
     passReqToCallback: true,
     clientID: global.settings.social.facebook.id,
     clientSecret: global.settings.social.facebook.secret,
     callbackURL: "http://"+global.settings.domain+":"+global.settings.port+"/auth/facebook/callback"
-}, function(req,accessToken, refreshToken, profile, cb) {
+}, function(req,res,accessToken, refreshToken, profile, cb) {
 
 	//Account.find()
 	//console.log(profile);
@@ -20,32 +20,45 @@ var facebookStrategy = new facebook(
 		if (err) return cb(err);
 
 		if (!user) {
-			
-			user = new Account({
-				email:profile._json.email,
-				provider:'facebook',
-				name:profile._json.name,
-				gender:profile._json.gender,
-				timezone:profile._json.timezone,
-				facebook:{
-					id: profile._json.id,
-					link: profile._json.link,
-					username: profile._json.username,
-					location: profile._json.location,
-					locale: profile._json.locale,
-					verified: profile._json.verified,
-					accessToken:accessToken
-				}
-			});
 
-			//console.log(user);
-
-			user.save(function(err,newUser) {
+			// Check if a user with the same email exists already
+			Account.findOne({'email':profile._json.email}, function(err,emailUser) {
 				if (err) return cb(err);
-				console.log("Created Account: "+newUser.id);
-				cb(null,newUser);
+
+				if (emailUser) {
+					return cb(null,false,{message:global.c("account","facebook_email_used")});
+				} 
+				else 
+				{
+					user = new Account({
+						email:profile._json.email,
+						provider:'facebook',
+						name:profile._json.name,
+						gender:profile._json.gender,
+						timezone:profile._json.timezone,
+						facebook:{
+							id: profile._json.id,
+							link: profile._json.link,
+							username: profile._json.username,
+							location: profile._json.location,
+							locale: profile._json.locale,
+							verified: profile._json.verified,
+							accessToken:accessToken
+						}
+					});
+
+					//console.log(user);
+
+					user.save(function(err,newUser) {
+						if (err) return cb(err);
+						console.log("Created Account: "+newUser.id);
+						cb(null,newUser);
+					});
+
+				}
+
 			});
-			
+
 		} else {
 			console.log("Found Account: "+user.id);
 			cb(null,user);
@@ -71,3 +84,5 @@ passport.deserializeUser(function(id, done) {
   		done(null, user);
   	});
 });
+
+

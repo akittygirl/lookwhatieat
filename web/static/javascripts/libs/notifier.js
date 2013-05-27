@@ -40,8 +40,8 @@ var Notifier = (function() {
         container_styles: {
             position: "fixed",
             zIndex: 99999,
-            right: "62px",
-            top: "62px"
+            right: "32px",
+            top: "22px"
         },
         /* individual notification box styles */
         box_styles: {

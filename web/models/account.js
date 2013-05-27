@@ -13,19 +13,16 @@
 
 */
 
-var mongoose = require('mongoose')
+var mongoose = require('mongoose') 
   , Schema = mongoose.Schema
   , _ = require('underscore')
   , crypto = require('crypto')
   , authTypes = ['facebook']
   , check = require('validator').check
 
-
-var accountTypes= ['gamer','controller','maker','god'];
-
 var AccountSchema=new Schema({
 	email:{type:String,unique:true,required:true},
-	username:{type:String,unique:true,required:false},
+	username:{type:String},
 	provider:String,
 	hashed_password:String,
 	salt:String,

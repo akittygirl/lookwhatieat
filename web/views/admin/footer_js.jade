@@ -31,4 +31,4 @@ script(src="/bootstrap/js/custom.js",defer="defer")
 
 script(type='text/javascript')
 	var serverData={page:"#{page}"}
-
+	var serverFlash=#{JSON.stringify(req.flash())};

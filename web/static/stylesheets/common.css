@@ -1,12 +1,13 @@
 
  
-#contentblock {min-height:400px;}
+#contentblock {min-height:400px;padding-bottom:50px;}
 
 
 footer {background-color:#ddd;}
 
-
-
+.break-top {margin-top:15px;}
+.break-bottom {margin-bottom:15px;}
+.center,.centre {text-align:center;}
 
 .tipsy { padding: 5px; font-size: 14px; position: absolute; z-index: 100000; }
 .tipsy-inner { padding: 5px 8px 4px 8px; background-color: black; color: white; max-width: 200px; text-align: center; }

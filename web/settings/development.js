@@ -29,15 +29,16 @@ exports.settings={
       	password: "eat",
       	host: "localhost",
       	database: "eat"
-	}
+	} 
 	*/   
    
 	mongodb: { 
 		db: 'lookwhatieat',
-	    host: 'localhost',
+	    host: 'melia',
 	    port: 27017,
 	    username: null,
 	    password: null,
+	    auto_reconnect: true
 	}
 
 }

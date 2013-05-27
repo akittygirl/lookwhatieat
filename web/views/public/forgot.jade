@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+	div.row-fluid
+		div#page-title.span4.offset4
+				h2 #{global.c("account","forgot_title")}
+
+	div.row-fluid
+		div#wrapper.lr-page.full.span4.offset4
+			div.row-fluid
+				div#login-form.span12
+					div.break-bottom No worries! Simply enter your email address.
+					form
+						div.row-fluid 
+							input#user(name="email",type="text",placeholder=global.c("account","email_placeholder")).span12
+						div.actions
+							button(type="call-update",data-call="reset-password").btn.btn-success.span12 #{global.c("account","reset_password")}
+	
+	div.row-fluid
+		div.lr-page.full.span4.offset4
+			div.center
+				a(href="/help/login") Still can't login?
