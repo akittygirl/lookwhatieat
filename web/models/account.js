@@ -30,7 +30,7 @@ var AccountSchema=new Schema({
 	hashed_password:String,
 	salt:String,
 	facebook: {
-    id: {type:Number,unique:true,required:true},
+    id: {type:Number,unique:true,required:false},
     link: String,
     username: String,
     location: {
