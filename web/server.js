@@ -66,6 +66,10 @@ app.get('/register', function(req,res,next) {
 	global.handlers.page(req,res,next,"public/register");
 }); 
 
+// Admin Route
+app.get('/admin', function(req,res,next) {
+	global.handlers.page(req,res,next,"admin/home");
+}); 
 
 // Facebook Routes
 app.get('/auth/facebook', 
@@ -74,6 +78,10 @@ app.get('/auth/facebook',
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { successRedirect: '/',
                                       failureRedirect: '/login' }));
+
+
+
+
 
 app.get('/logout', function(req, res){
   req.logout();
